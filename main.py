@@ -9,7 +9,7 @@ def main():
     )
     
     # Your default video (replace with your video path or URL)
-    DEFAULT_VIDEO = "your_video.mp4"  # Local file path
+    DEFAULT_VIDEO = "https://tenor.com/view/get-lost-get-out-funny-funny-face-oombu-gif-17507725"  # Local file path
     # OR use a URL:
     # DEFAULT_VIDEO = "https://example.com/your_video.mp4"
     
