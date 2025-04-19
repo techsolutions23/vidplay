@@ -1,38 +1,29 @@
 import streamlit as st
+from pathlib import Path
 
-def main():
-    # Set page configuration
-    st.set_page_config(
-        page_title="My Video Website",
-        page_icon="▶️",
-        layout="centered"  # or "wide" for wider layout
-    )
-    
-    # Title
-    st.title("Welcome to My Video Website")
-    
-    # Your default video (replace with your video path or URL)
-    DEFAULT_VIDEO = "your_video.mp4"  # Local file path
-    # OR use a URL:
-    # DEFAULT_VIDEO = "https://example.com/your_video.mp4"
-    
-    # Display the video (autoplay doesn't work in Streamlit, user needs to click)
-    st.video(DEFAULT_VIDEO)
-    
-    # Optional: Add some text below the video
-    st.markdown("---")
-    st.markdown("### About This Video")
-    st.write("This is my default video that plays when you visit this website.")
-    
-    # Optional: Style adjustments
-    st.markdown("""
-    <style>
-        .stVideo {
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-    </style>
-    """, unsafe_allow_html=True)
+# Hide all Streamlit UI elements
+hide_streamlit_style = """
+<style>
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
+</style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
-if __name__ == "__main__":
-    main()
+# Video path (replace with your video file or URL)
+VIDEO_PATH = "your_video.mp4"  # Local file
+# VIDEO_PATH = "https://example.com/your_video.mp4"  # Or URL
+
+# HTML video player with autoplay and loop
+video_html = f"""
+<div style="margin: 0 auto; max-width: 100%;">
+    <video width="100%" height="auto" autoplay loop muted playsinline>
+        <source src="{VIDEO_PATH}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+"""
+
+# Display the video (will auto-play if browser allows)
+st.markdown(video_html, unsafe_allow_html=True)
